@@ -4,7 +4,7 @@ const app = express();
 
 app.use(express.json()); //automatically parse incoming joson object
 
-app.post("/task", async (req, res) => {
+app.post("/", async (req, res) => {
   try {
     let elementList = req.body.payload;
     elementList = elementList.filter((element) => {
