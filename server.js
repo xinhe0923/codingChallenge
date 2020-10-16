@@ -16,7 +16,7 @@ app.post("/", async (req, res) => {
       return { image: image.showImage, slug, title };
     });
     const result = { response: response };
-    res.send(result);
+    res.json(result);
   } catch (error) {
     res
       .status(400)
