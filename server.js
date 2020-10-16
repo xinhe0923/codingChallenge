@@ -4,6 +4,16 @@ const app = express();
 
 app.use(express.json()); //automatically parse incoming joson object
 
+app.use((err, req, res, next) => {
+  if (err instanceof SyntaxError)
+    return res.status(400).send(
+      JSON.stringify({
+        error: "Could not decode request: JSON parsing failed",
+      })
+    );
+  res.status(500).send();
+});
+
 app.post("/", async (req, res) => {
   try {
     let elementList = req.body.payload;
