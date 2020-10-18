@@ -14,13 +14,12 @@ app.use((err, req, res, next) => {
 
 app.post("/", async (req, res) => {
   try {
-    let elementList = req.body.payload;
+    const elementList = req.body.payload;
     elementList = elementList.filter((element) => {
       return element.drm && element.episodeCount > 0;
     });
     const response = elementList.map((element) => {
       const { image, slug, title } = element;
-      //   console.log({ image, slug, title });
       return { image: image.showImage, slug, title };
     });
     const result = { response: response };
